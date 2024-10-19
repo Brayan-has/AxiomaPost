@@ -107,7 +107,7 @@ class ProductSeeder extends Seeder
             "code" => "20210325",
             "name" => "Mandarina",
             "stock" => 14,
-            "price" => 12000,
+            "price" => 1200,
             "id_category" => 1
         ]);
         
@@ -115,7 +115,7 @@ class ProductSeeder extends Seeder
             "code" => "20210325",
             "name" => "Zapato nike 90",
             "stock" => 35,
-            "price" => 1200000,
+            "price" => 1200,
             "id_category" => 2
         ]);
         
