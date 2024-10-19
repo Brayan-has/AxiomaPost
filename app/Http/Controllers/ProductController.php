@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\validator;
+use Illuminate\Support\Facades\Cache;
+
 
 class ProductController extends Controller
 {
@@ -13,25 +15,34 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::simplepaginate(15);
 
         // if there's nothing int the table show a massage
-        if(!$products->empty())
+        if(Cache::has("products"))
         {
-            $data =[
-                "message" => "There's no products",
+            
+            return response()->json([
+                "message" => Cache::get("products"),
                 "status" => 200
-            ];
-            return response()->json($data,$data["status"]);
+            ],200);
+        }
+        else 
+        {
+            $products = Product::simplepaginate(15);
+
+            if ($products->isEmpty()) {
+                return response()->json([
+                    'Message' => 'There are no products',
+                    'Status' => 404,
+                ], 404);
+            }
+            Cache::put('products', $products);
+
+            return response()->json([
+                'Customers' => $products,
+                'Status' => 200
+            ], 200);
         }
 
-        // if there products show it all
-        $list = [
-            "Products" => $products,
-            "status" => 200
-        ];
-
-        return response()->json($list,$list["status"]);
     }
 
 
