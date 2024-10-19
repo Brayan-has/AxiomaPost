@@ -79,34 +79,34 @@ Route::prefix("v0.1")->group(function (){
 //groupe route sales endpoints
 Route::prefix("v0.1")->group(function(){
     // endpoint for show all sale
-    Route::get("/sales",[saleController::class,"index"]);
+    Route::get("/sales",[SaleController::class,"index"]);
     // endpoint for create a sale
-    Route::post("/sales",[saleController::class, "store"]);
+    Route::post("/sales",[SaleController::class, "store"]);
     // endpoint for show a specific sale
-    Route::get("/sales/{id}",[saleController::class, "show"]);
+    Route::get("/sales/{id}",[SaleController::class, "show"]);
     // endpoint for update o edit just a sale data specific
-    Route::patch("/sales/{id}",[saleController::class, "edit"]);
+    Route::patch("/sales/{id}",[SaleController::class, "edit"]);
     // endopoint for update all sale data
-    Route::put("/sales/{id}",[saleController::class, "update"]);
+    Route::put("/sales/{id}",[SaleController::class, "update"]);
     // endpoint for delete a rol regitred
-    Route::delete("/sales/{id}",[saleController::class, "destroy"]);
+    Route::delete("/sales/{id}",[SaleController::class, "destroy"]);
 
 });
 
 //groupe route customers endpoints
 Route::prefix('v0.1')->group(function(){
     // endpoint for show all customer
-    Route::get("/customers",[customerController::class,"index"]);
+    Route::get("/customers",[CustomerController::class,"index"]);
     // endpoint for create a customer
-    Route::post("/customers",[customerController::class, "store"]);
+    Route::post("/customers",[CustomerController::class, "store"]);
     // endpoint for show a specific customer
-    Route::get("/customers/{id}",[customerController::class, "show"]);
+    Route::get("/customers/{id}",[CustomerController::class, "show"]);
     // endpoint for update o edit just a sale data specific
-    Route::patch("/customers/{id}",[customerController::class, "edit"]);
+    Route::patch("/customers/{id}",[CustomerController::class, "edit"]);
     // endopoint for update all sale data
-    Route::put("/customers/{id}",[customerController::class, "update"]);
+    Route::put("/customers/{id}",[CustomerController::class, "update"]);
     // endpoint for delete a rol regitred
-    Route::delete("/customers/{id}",[customerController::class, "destroy"]);
+    Route::delete("/customers/{id}",[CustomerController::class, "destroy"]);
 });
 
 
