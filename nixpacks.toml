@@ -1,6 +1,6 @@
 [phases.build]
 commands = [
-  "composer install",
+  "composer update",
   "php artisan optimize",
   "php artisan config:cache",
   "php artisan route:cache",
