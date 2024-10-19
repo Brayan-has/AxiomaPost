@@ -1,7 +1,0 @@
-[phases.build]
-commands = [
-  "composer update",
-  php artisan cache:clear, 
- 
-]
-
