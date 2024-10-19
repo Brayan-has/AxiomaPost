@@ -25,5 +25,6 @@ class Rol extends Model #model parent
     }
     protected $fillable = [
         "name",
+        "id"
     ];
 }
