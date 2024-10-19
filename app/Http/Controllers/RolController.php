@@ -28,7 +28,8 @@ class RolController extends Controller
          }
          else 
          {
-             $rols = Rol::simplepaginate(15);
+            $rols = Rol::simplepaginate(15);
+             
  
              if ($rols->isEmpty()) {
                  return response()->json([
