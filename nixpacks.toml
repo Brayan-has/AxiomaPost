@@ -1,13 +1,7 @@
 [phases.build]
 commands = [
   "composer update",
-  
+  php artisan cache:clear, 
+  php artisan queue:restart
 ]
 
-[phases.deploy]
-commands = [
-  "composer update",
-  "php artisan migrate --force"
-
-]
- 
