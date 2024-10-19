@@ -18,7 +18,7 @@ class RolController extends Controller
         //show all rols
         $rols = Rol::simplepaginate(15);
 
-        if(!$rols->empty())
+        if(!$rols->isempty())
         {
             return response()->json(["Message" => "There's no rols yet"],404);
         }

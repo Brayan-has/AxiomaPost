@@ -18,7 +18,7 @@ class EmployeeController extends Controller
         $employees = Employee::simplepaginate(15);
 
         // if there's no data show a message
-        if(!$employees->empty())
+        if(!$employees->isempty())
         {
             $data = [
                 "message" => "There are not employees",
