@@ -20,11 +20,11 @@ class Rol extends Model #model parent
         return $this->hasOne(Employee::class,'id_rol','id')->withDefault([
             "name" => null
         ]);
-        // 
+        
         
     }
     protected $fillable = [
         "name",
-        "id"
+        
     ];
 }
