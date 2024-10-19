@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
+
 
 class EmployeeController extends Controller
 {
@@ -14,25 +16,32 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //show all employees 
-        $employees = Employee::simplepaginate(15);
-
-        // if there's no data show a message
-        if(!$employees->isempty())
+       
+        if(Cache::has("employees"))
         {
-            $data = [
-                "message" => "There are not employees",
+            
+            return response()->json([
+                "message" => Cache::get("empoyees"),
                 "status" => 200
-            ];
-            return response()->json($data,$data["status"]);
+            ],200);
         }
-        // if there employes show it all of them
-        $data = [
-            "Employees" => $employees,
-            "status" => 200
-        ];
-        return response()->json($data,$data["status"]);
+        else 
+        {
+            $employees = Employee::simplepaginate(15);
 
+            if ($employees->isEmpty()) {
+                return response()->json([
+                    'Message' => 'There are no employees',
+                    'Status' => 404,
+                ], 404);
+            }
+            Cache::put('products', $employees);
+
+            return response()->json([
+                'Customers' => $employees,
+                'Status' => 200
+            ], 200);
+        }
     }
 
     /**

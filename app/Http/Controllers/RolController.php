@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Rol;
+use Illuminate\Support\Facades\Cache;
+
 
 // name space super important
 use Illuminate\Support\Facades\Validator;
@@ -15,19 +17,33 @@ class RolController extends Controller
      */
     public function index()
     {
-        //show all rols
-        $rols = Rol::simplepaginate(15);
-
-        if(!$rols->isempty())
-        {
-            return response()->json(["Message" => "There's no rols yet"],404);
-        }
-
-        $data = [
-            "Message" => $rols,
-            "status" => 200
-        ];
-        return response()->json($data,$data["status"]);
+         // if there's nothing int the table show a massage
+         if(Cache::has("rols"))
+         {
+             
+             return response()->json([
+                 "message" => Cache::get("rols"),
+                 "status" => 200
+             ],200);
+         }
+         else 
+         {
+             $rols = Rol::simplepaginate(15);
+ 
+             if ($rols->isEmpty()) {
+                 return response()->json([
+                     'Message' => 'There are no rols',
+                     'Status' => 404,
+                 ], 404);
+             }
+             Cache::put('products', $rols);
+ 
+             return response()->json([
+                 'Customers' => $rols,
+                 'Status' => 200
+             ], 200);
+         }
+ 
     }
 
     /**
