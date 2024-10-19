@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Routes for employees endpoints
 Route::prefix("v0.1")->group(function () {
     // ruta para mostrar los empleados
-    Route::get("/employees",[EmployeeController::class,"index"]);
+    Route::get("/employees",[employeeController::class,"index"]);
     // ruta crear un usuario 
     Route::post("/employees",[EmployeeController::class,"store"]);
     // ruta para mostrar los datos de un usuario especifico
