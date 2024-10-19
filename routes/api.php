@@ -5,8 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // importamos el controllador
-use App\Http\controllers\EmployeeController;
-use App\Http\controllers\ProductController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\saleController;
 
