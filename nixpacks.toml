@@ -2,6 +2,6 @@
 commands = [
   "composer update",
   php artisan cache:clear, 
-  php artisan queue:restart
+  php artisan queued:restart
 ]
 
