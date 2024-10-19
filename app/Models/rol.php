@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 // namespace for the relationship
 use Illuminate\Database\Eloquent\Relations\HasOne;
-class rol extends Model #model parent
+class Rol extends Model #model parent
 { 
     use HasFactory;
 
