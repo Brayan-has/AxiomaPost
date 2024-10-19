@@ -6,7 +6,7 @@ commands = [
 
 [phases.deploy]
 commands = [
-
+  "composer update",
   "php artisan migrate --force"
 
 ]
