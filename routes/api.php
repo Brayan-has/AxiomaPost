@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\customerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // importamos el controllador
-use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\RolController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\RolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Routes for employees endpoints
 Route::prefix("v0.1")->group(function () {
     // ruta para mostrar los empleados
-    Route::get("/employees",[employeeController::class,"index"]);
+    Route::get("/employees",[EmployeeController::class,"index"]);
     // ruta crear un usuario 
     Route::post("/employees",[EmployeeController::class,"store"]);
     // ruta para mostrar los datos de un usuario especifico
