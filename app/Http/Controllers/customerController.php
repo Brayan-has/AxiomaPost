@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cache;
 
-class customerController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
