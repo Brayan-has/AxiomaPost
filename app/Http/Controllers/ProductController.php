@@ -17,16 +17,7 @@ class ProductController extends Controller
     {
 
         // if there's nothing int the table show a massage
-        if(Cache::has("products"))
-        {
-            
-            return response()->json([
-                "message" => Cache::get("products"),
-                "status" => 200
-            ],200);
-        }
-        else 
-        {
+        
             $products = Product::simplepaginate(15);
 
             if ($products->isEmpty()) {
@@ -35,13 +26,13 @@ class ProductController extends Controller
                     'Status' => 404,
                 ], 404);
             }
-            Cache::put('products', $products);
+       
 
             return response()->json([
-                'Customers' => $products,
+                'products' => $products,
                 'Status' => 200
             ], 200);
-        }
+        
 
     }
 
